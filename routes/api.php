@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContentController;
 
 Route::prefix('v1')->group(function () {
     // Auth Routes
@@ -22,5 +23,8 @@ Route::prefix('v1')->group(function () {
                 'role' => $user->role->role_name ?? null,
             ]);
         });
+
+        // Content Routes
+        Route::get('/contents', [ContentController::class, 'index']);
     });
 });
